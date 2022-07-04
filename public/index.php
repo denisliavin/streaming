@@ -3,6 +3,13 @@
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
+function p($p) {
+    echo "<pre>";
+    print_r($p);
+    echo "</pre>";
+    exit;
+}
+
 define('LARAVEL_START', microtime(true));
 
 /*
