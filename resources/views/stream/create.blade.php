@@ -41,9 +41,9 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="document_name">Preview</label>
-                                            <input name="document_name" value="{{ old('document_name') }}" type="text" class="form-control" id="document_name">
-                                            @error('document_name')
+                                            <label for="image">Preview</label>
+                                            <input name="image" type="file" class="form-control" id="image">
+                                            @error('image')
                                             <small class="text-danger">{{ $message }}</small>
                                             @enderror
                                         </div>

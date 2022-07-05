@@ -24,8 +24,9 @@ class StreamStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'nullable',
+            'name' => 'required',
             'description' => 'nullable',
+            'image' => 'nullable|mimes:jpeg,jpg,png'
         ];
     }
 }

@@ -63,12 +63,15 @@
                                     @csrf
                                 </form>
                             </li>
+                            <li class="nav-item">
+                                <div class="ml-4">{{ auth()->user()->key }}</div>
+                            </li>
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
-
+        @include("layouts.alert")
         <main class="py-4">
             @yield('content')
         </main>

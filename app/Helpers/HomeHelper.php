@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Entity\Stream;
 use Illuminate\Http\Response;
 
 class HomeHelper
@@ -16,10 +17,25 @@ class HomeHelper
 
         if ($response->getStatusCode() == Response::HTTP_OK) {
             $items = json_decode($response->getBody()->getContents());
+            $this->attachImage($items);
         }
 
         return [
             'items' => $items
         ];
+    }
+
+    public function attachImage(&$items)
+    {
+        $streams = Stream::query()->with('image')->get();
+
+        foreach ($items as $item) {
+            $stream = $streams->firstWhere('i_stream', $item->streamId);
+            $item->image = null;
+
+            if ($stream && $stream->image) {
+                $item->image = $stream->getImagePath();
+            }
+        }
     }
 }

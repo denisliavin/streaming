@@ -1,6 +1,7 @@
 <?php
 namespace App\UseCases;
 
+use App\Entity\Stream;
 use Illuminate\Http\Response;
 
 class StreamService
@@ -19,8 +20,8 @@ class StreamService
         ]);
 
         if ($response->getStatusCode() == Response::HTTP_OK) {
-            $items = json_decode($response->getBody()->getContents());
-            p($items);
+            $data = json_decode($response->getBody()->getContents());
+            Stream::createObj($request, $data->streamId, auth()->user()->id);
         }
     }
 }

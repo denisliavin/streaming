@@ -12,7 +12,9 @@
         @forelse($items as $item)
             <div class="col-2 mb-2">
                 <div class="card">
-{{--                    <img class="card-img-top" src="..." alt="Card image cap">--}}
+                    @if($item->image)
+                    <img class="card-img-top" src="{{ $item->image }}" alt="">
+                    @endif
                     <div class="card-body">
                         <a href="{{ route("streams.show", ['stream' => $item->streamId]) }}" class="card-title">{{ $item->name ? : 'no name'}}</a>
                         @if($item->description)

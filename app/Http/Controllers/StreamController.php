@@ -38,17 +38,17 @@ class StreamController extends Controller
             return redirect()->back()->with('error', $e->getMessage());
         }
 
-        return redirect()->back()->with('success', "Success created");
+        return redirect()->route('home')->with('success', "Success created");
     }
 
-    public function show(HomeIndexRequest $request)
+    public function show($stream)
     {
         try {
-            $vars = $this->helper->getIndexVars($request);
+            $vars = $this->helper->getShowVars($stream);
         } catch (Throwable $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
 
-        return view('home', $vars);
+        return view('stream.show', $vars);
     }
 }
