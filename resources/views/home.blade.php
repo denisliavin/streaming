@@ -3,7 +3,9 @@
 @section('content')
 <div class="container">
     <div class="mb-4">
-        <button class="btn btn-success float-right">Add</button>
+        @auth
+            <a href="{{ route("streams.create") }}" class="btn btn-success btn-sm float-right">Add</a>
+        @endauth
         <h2>Streams</h2>
     </div>
     <div class="row">
@@ -12,7 +14,7 @@
                 <div class="card">
 {{--                    <img class="card-img-top" src="..." alt="Card image cap">--}}
                     <div class="card-body">
-                        <h5 class="card-title">{{ $item->name ? : 'no name'}}</h5>
+                        <a href="{{ route("streams.show", ['stream' => $item->streamId]) }}" class="card-title">{{ $item->name ? : 'no name'}}</a>
                         @if($item->description)
                             <p class="card-text">{{ $item->description }}</p>
                         @endif

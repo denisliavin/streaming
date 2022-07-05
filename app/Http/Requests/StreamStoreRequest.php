@@ -24,7 +24,8 @@ class StreamStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'page' => 'nullable'
+            'name' => 'nullable',
+            'description' => 'nullable',
         ];
     }
 }
